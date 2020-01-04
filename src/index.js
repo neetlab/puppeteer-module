@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-const RESOLVABLE = /\/@main_process\/(.+?)$/;
+const RESOLVABLE = /main_process\/(.+?)$/;
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -31,7 +31,7 @@ const RESOLVABLE = /\/@main_process\/(.+?)$/;
 
   // Embed JavaScript
   await page.addScriptTag({ type: 'module', content: `
-    import { HELLO } from '/@main_process/src/demo.mjs';
+    import { HELLO } from '/main_process/src/demo';
     window.data = HELLO;
   `});
 
