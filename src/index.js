@@ -36,6 +36,10 @@ const RESOLVABLE = /main_process\/(.+?)$/;
   `});
 
   await page.waitFor(1000);
+  
+  // Alternativly, you can wait for global variable to be declared
+  // by using waitForFunction
+  await page.waitForFunction(_ => window.data);
 
   const data = await page.evaluate(_ => window.data);
   console.log(`Data: ${data}`);
